@@ -1,0 +1,139 @@
+    * {
+        box-sizing: border-box;     /*применяется для изменения алгоритма расчёта ширины и высоты элемента. ширина блока складывается из ширины контента (width), значений отступов (margin), полей (padding) и границ (border).*/
+        padding: 0;     /* позволяет задать величину поля сразу для всех сторон элемента или определить поля только для указанных сторон. */
+        margin: 0;   /*позволяет контейнеру обрезать поля своих дочерних элементов там, где они примыкают к краям контейнера.*/
+        border: 0;  /* Толщина рамки задаётся свойством border, при этом если указано border: 0, то рамка не выводится. При других значениях border рисунок всегда имеет приоритет. */
+    }    
+    body {
+        height: 100%;
+        font-family: 'Poppins', sans-serif;  /*устанавливает семейство шрифта, которое будет использоваться для оформления текста содержимого. */
+    }    
+    img {
+        max-width: 100%;    /* устанавливает максимальную ширину элемента. */
+    }    
+    a {
+        text-decoration: none;  /* устанавливает внешний вид декоративных линий в тексте. */
+    }    
+    ul li {
+        list-style: none;   /*позволяет одновременно задать стиль маркера, его положение, а также изображение, которое будет использоваться в качестве маркера списка.*/
+    }
+    h2 {
+        font-size: 25px;
+    }
+    .wrapper {
+        display: grid;
+        min-height: 100vh;
+        grid-template-areas:
+        "header header header header header"
+        ". . . . ."
+        "menu . content . ."
+        ". . . . ."
+        "footer footer footer footer footer";
+        grid-template-columns: 125px 5px 1fr;
+        grid-template-rows: 90px 5px 1fr 5px 70px;
+        text-align: center;
+        font-size: 22px;         
+    }
+    .header {
+        grid-area: header;
+        background-color: #794f45;        
+        align-items: center;
+        display: grid;
+        grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+    }    
+    .header__logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #fff;
+        grid-column: 2 / 3; 
+        padding: 20px 5px;       
+    }   
+    .header__list {
+        display: grid;
+        grid-auto-flow: column;
+        justify-items: end;        
+    }    
+    .header__link {        
+        text-transform: uppercase;
+        font-size: 19px;              
+    }
+    .header__list a {
+        color: black;
+    }
+    .menu {
+        grid-area: menu;                       
+    }
+    .sidebar__list {
+        display: grid;        
+        grid-row-gap: 140px;
+        padding: 30px; 
+        font-size: 17px;
+        background-color: #7a956b;
+        /* justify-items: stretch; */
+        align-items: end;                             
+    }
+    .sidebar__link {
+        color: black;        
+    }
+    .content {
+        grid-area: content;
+        display: grid;
+        grid-auto-flow: column;                        
+        justify-items: stretch;
+        align-items: stretch;
+        grid-template-columns: auto; 
+    }        
+    .footer {
+        padding: 15px;
+        background-color: #77608d;
+        grid-area: footer;
+        align-items: center;
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+    }
+    @media screen and (max-width: 468px) {
+        .wrapper {
+            display: grid;
+            height: 100vh;
+            grid-template-areas:
+            "header"
+            "."            
+            "menu"
+            "."             
+            "content"            
+            "." 
+            "footer";
+            grid-template-columns:1fr;
+            grid-template-rows: 80px 1px 80px 1px 1fr 1px 80px;            
+        }
+        .header__menu {            
+            display: grid;
+            justify-items: center;            
+        }
+        .header__list{
+            grid-column-gap: 20px;
+        }
+        .header__list a {
+            color: black;
+        }
+        .header__link2,
+        .header__link3,
+        .header__link4 {
+            display: none;
+        }
+        .footer {
+            grid-template: 1fr 1fr / 1fr;
+            justify-items: center;
+        }
+        .sidebar__list {
+            display: grid;
+            grid-auto-flow: column;                        
+            justify-items: center;
+            grid-row-gap: 10px;            
+            font-size: 17px;               
+    }
+    .content__gallery2 {
+        display: none;
+    }
+}
